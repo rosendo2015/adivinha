@@ -94,7 +94,14 @@ h2 {
 p {
   margin: 0;
 }
-
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  padding: 20px;
+}
 code,
 .counter {
   font-family: var(--mono);
@@ -108,4 +115,72 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+ul li{
+  list-style: none;
+}
+.word {
+ font-size: "24px";
+ letter-spacing: "5px";
+}
+input{
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: var(--accent-bg);
+  font-size: 1.25rem;
+  font-family: var(--sans);
+}
+button {
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 135%;
+  padding: 12px 24px;
+  border-radius: 4px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+.wrapperInput{
+  margin-block: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.palavra {
+  display: flex;
+  gap: 12px; /* aumente o gap entre as caixinhas */
+  flex-wrap: wrap;
+  justify-content: center; /* centraliza na linha */
+}
+
+.caixinha {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;   /* aumente a largura */
+  height: 40px;  /* aumente a altura */
+  border: 2px solid #444;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 20px; /* um pouco maior para caber melhor */
+  margin: 2px;     /* adiciona espaço externo */
+}
+
+.vazio {
+  background-color: #9ab5ff;
+  border: none;
+}
+
+.acerto {
+  background-color: rgb(199, 253, 199);
+  border: none;
+}
+
+.espaco {
+  width: 40px; /* mesmo tamanho da caixinha */
+  display: inline-block;
 }

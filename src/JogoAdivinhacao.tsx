@@ -1,3 +1,4 @@
+import styles from "./index.module.css";
 import React, { useState, useEffect } from "react";
 
 interface Palavra {
@@ -43,21 +44,35 @@ const JogoAdivinhacao: React.FC = () => {
     setLetra("");
   };
 
-  const mostrarPalavra = (): string => {
-    return palavra
-      .split("")
-      .map((char) =>
-        char === " " ? " " : acertos.includes(char) ? char : "_"
-      )
-      .join(" ");
-  };
+ const mostrarPalavra = () => {
+  return (
+    <div className="palavra">
+      {palavra.split("").map((char, index) => {
+        if (char === " ") {
+          return <span key={index} className={styles.espaco}>&nbsp;</span>;
+        }
+
+        if (acertos.includes(char)) {
+          return (
+            <span key={index} className={`${styles.caixinha} ${styles.acerto}`}>
+  {char}
+</span>
+          );
+        }
+
+        // Default: caixinha vazia
+        return <span key={index} className={`${styles.caixinha} ${styles.vazio}`}></span>
+      })}
+    </div>
+  );
+};
 
   const venceu: boolean = palavra.split("").every(
     (char) => char === " " || acertos.includes(char)
   );
 
   return (
-    <div style={{ fontFamily: "Arial", padding: "20px" }}>
+    <div className={styles.container}>
       <h2>Jogo de Adivinhação de Palavras</h2>
       <p><strong>Dicas:</strong></p>
       <ul>
@@ -66,14 +81,15 @@ const JogoAdivinhacao: React.FC = () => {
         ))}
       </ul>
 
-      <p style={{ fontSize: "24px", letterSpacing: "5px" }}>
-        {mostrarPalavra()}
-      </p>
+      <div className={styles.word}>
+  {mostrarPalavra()}
+</div>
 
       {venceu ? (
         <h3>🎉 Você acertou a palavra: {palavra}!</h3>
       ) : (
         <>
+            <div className={styles.wrapperInput}>
           <input
             type="text"
             maxLength={1}
@@ -81,6 +97,7 @@ const JogoAdivinhacao: React.FC = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLetra(e.target.value)}
           />
           <button onClick={verificarLetra}>Tentar letra</button>
+          </div>
           <p>Tentativas: {tentativas.join(", ")}</p>
         </>
       )}
