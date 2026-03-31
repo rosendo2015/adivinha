@@ -1,23 +1,8 @@
 import styles from "./index.module.css";
 import React, { useState, useEffect } from "react";
+import { WORDS } from "./utils/word.ts";
 
-interface Palavra {
-  resposta: string;
-  dicas: string[];
-}
 
-const palavras: Palavra[] = [
-  { resposta: "Smartphone", dicas: ["Dispositivo portátil", "Usado para chamadas e aplicativos"] },
-  { resposta: "Wi-Fi", dicas: ["Conexão sem fio", "Permite acesso à internet"] },
-  { resposta: "Blockchain", dicas: ["Tecnologia de registros distribuídos", "Base das criptomoedas"] },
-  { resposta: "Cloud Computing", dicas: ["Armazenamento remoto", "Acessível pela internet"] },
-  { resposta: "Inteligência Artificial", dicas: ["Máquinas que aprendem", "Usada em reconhecimento de voz"] },
-  { resposta: "Big Data", dicas: ["Grandes volumes de informação", "Análise para gerar insights"] },
-  { resposta: "5G", dicas: ["Rede móvel", "Alta velocidade de conexão"] },
-  { resposta: "Realidade Virtual", dicas: ["Ambiente simulado", "Usado em jogos imersivos"] },
-  { resposta: "Chatbot", dicas: ["Atendimento automatizado", "Responde mensagens de usuários"] },
-  { resposta: "Código QR", dicas: ["Imagem escaneável", "Usado para acessar links rapidamente"] }
-];
 
 const JogoAdivinhacao: React.FC = () => {
   const [palavra, setPalavra] = useState<string>("");
@@ -27,9 +12,9 @@ const JogoAdivinhacao: React.FC = () => {
   const [letra, setLetra] = useState<string>("");
 
   useEffect(() => {
-    const indice = Math.floor(Math.random() * palavras.length);
-    setPalavra(palavras[indice].resposta.toUpperCase());
-    setDicas(palavras[indice].dicas);
+    const indice = Math.floor(Math.random() * WORDS.length);
+    setPalavra(WORDS[indice].word.toUpperCase());
+    setDicas(WORDS[indice].tip);
   }, []);
 
   const verificarLetra = (): void => {
