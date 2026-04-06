@@ -148,6 +148,15 @@ button {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  input{
+    width: 200px;
+    height: 2.5rem;
+    border: none;
+    background: var(--accent-bg);
+    font-size: 1.25rem;
+    font-family: var(--sans);
+    padding: 0 0.5rem;
+  }
 }
 
 .palavra {
