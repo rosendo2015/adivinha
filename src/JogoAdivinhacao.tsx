@@ -73,19 +73,7 @@ const JogoAdivinhacao: React.FC = () => {
     <div className={styles.container}>
       <h2>Jogo de Adivinhação de Palavras</h2>
 
-      {!jogador ? (
-        <div className={styles.wrapperInput}>
-          <input
-          maxLength={20}
-            type="text"
-            placeholder="Digite seu nome"
-            value={jogador}
-            onChange={(e) => setJogador(e.target.value)}
-          />
-        </div>
-      ) : (
-        <p><strong>Jogador:</strong> {jogador}</p>
-      )}
+     
 
       <p><strong>Placar:</strong> {placar}</p>
 
